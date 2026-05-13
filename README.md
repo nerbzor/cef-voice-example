@@ -5,6 +5,35 @@ git clone https://github.com/nerbzor/cef-voice-example.git
 cd cef-voice-example
 ```
 
+## Quickstart
+
+```
+1. ROB (https://rob.compute.dev.ddcdragon.com)
+   → Create agent service with your Cere wallet → copy agentServicePubkey
+
+2. AssemblyAI (https://assemblyai.com)
+   → Sign up → copy API key
+
+3. Fill in .env
+   cp .env.example .env
+   → paste agentServicePubkey + AssemblyAI key
+
+4. Build the agent
+   cd agent && npm install && npm run build && npm run prepare-manifest && cd ..
+   → produces manifest-publish.json
+
+5. ROB → upload manifest-publish.json → Publish
+
+6. Marketplace (https://agent-marketplace.compute.dev.ddcdragon.com)
+   → find your agent → enter AssemblyAI key + Gemini key in settings → Connect
+
+7. Run the client
+   npm install && npm run dev → open http://localhost:5173
+   → connect the same Cere wallet you used in the marketplace → Record → done
+```
+
+---
+
 A minimal end-to-end example of a CEF vault agent that records audio, transcribes it, runs an LLM, and stores the result — all wired through Cere's vault infrastructure.
 
 ---
