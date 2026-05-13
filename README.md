@@ -1,5 +1,10 @@
 # CEF Voice Example
 
+```bash
+git clone https://github.com/nerbzor/cef-voice-example.git
+cd cef-voice-example
+```
+
 A minimal end-to-end example of a CEF vault agent that records audio, transcribes it, runs an LLM, and stores the result — all wired through Cere's vault infrastructure.
 
 ---
