@@ -104,7 +104,13 @@ VITE_SCOPE_NAME=default
 VITE_ASSEMBLY_AI_KEY=<your AssemblyAI key>
 ```
 
-The Gemini key does **not** go here — it goes in the marketplace agent settings in Step 5.
+**AssemblyAI key is needed in two places:**
+- Here in `.env` — the browser uses it to upload audio blobs to AssemblyAI before passing the URL to the agent
+- Marketplace agent settings (Step 5) — the agent uses it to submit transcription jobs
+
+It's the same key in both places.
+
+**Gemini key** goes in marketplace agent settings only — the LLM call runs inside the agent, not in the browser.
 
 ### 3. Build the agent and generate a manifest
 
