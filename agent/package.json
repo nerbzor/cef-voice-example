@@ -1,0 +1,14 @@
+{
+  "name": "cef-voice-example-agent",
+  "version": "0.1.0",
+  "private": true,
+  "type": "commonjs",
+  "scripts": {
+    "build": "pnpm exec cef build",
+    "prepare-manifest": "node prepare-manifest.mjs"
+  },
+"devDependencies": {
+    "@cef-ai/cli": "latest",
+    "@cef-ai/agent-sdk": "latest"
+  }
+}

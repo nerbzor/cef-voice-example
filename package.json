@@ -1,0 +1,19 @@
+{
+  "name": "cef-voice-example",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc --noEmit && vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@cef-ai/client-sdk": "^0.0.17",
+    "@cere/embed-wallet": "^0.23.4"
+  },
+  "devDependencies": {
+    "typescript": "^5.2.2",
+    "vite": "^5.4.0"
+  }
+}

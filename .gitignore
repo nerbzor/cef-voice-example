@@ -1,0 +1,9 @@
+node_modules/
+dist/
+agent/dist/
+agent/node_modules/
+.env
+manifest-publish.json
+.DS_Store
+*.DS_Store
+logs/

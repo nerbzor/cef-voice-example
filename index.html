@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CEF Voice Example</title>
+  <link rel="stylesheet" href="/src/style.css" />
+</head>
+<body>
+  <div id="app">
+    <header>
+      <h1>CEF Voice Example</h1>
+      <p class="subtitle">Record audio → transcribe via AssemblyAI → detect signals via Gemini → store in a CEF vault cubby</p>
+    </header>
+
+    <section class="setup-card">
+      <h2>Before this works</h2>
+      <ol>
+        <li>Get a <strong>Cere wallet</strong> at <a href="https://wallet.dev.cere.io" target="_blank">wallet.dev.cere.io</a> and fund it with devnet tokens</li>
+        <li>Create an <strong>agent service in ROB</strong> (<a href="https://rob.compute.dev.ddcdragon.com" target="_blank">rob.compute.dev.ddcdragon.com</a>) using that wallet — copy your <code>agentServicePubkey</code></li>
+        <li>Fill in <code>.env</code> with your pubkey and agent ID, then <code>cd agent &amp;&amp; npm install &amp;&amp; npm run build &amp;&amp; npm run prepare-manifest</code></li>
+        <li>Upload <code>manifest-publish.json</code> to ROB → publish → set your AssemblyAI + Gemini keys in the agent settings UI</li>
+        <li>Go to the <strong>marketplace</strong> (<a href="https://agent-marketplace.compute.dev.ddcdragon.com" target="_blank">agent-marketplace.compute.dev.ddcdragon.com</a>), search for your agent, connect it to your wallet — disconnect any old version first</li>
+      </ol>
+      <p class="note">Vault URL is resolved automatically from <code>VITE_WALLET_ENV</code>. No JSON signer needed — ROB signs through your browser wallet.</p>
+    </section>
+
+<section id="auth-section" class="card">
+      <h2>1. Connect</h2>
+      <p>Sign in with your Cere wallet. Your vault is claimed automatically.</p>
+      <button id="connect-btn">Connect Wallet</button>
+      <p id="auth-status" class="status"></p>
+    </section>
+
+    <section id="record-section" class="card" hidden>
+      <h2>2. Record</h2>
+      <p>Audio is captured in 5-second chunks. Each chunk is uploaded to AssemblyAI before being sent to the agent — the CEF sandbox cannot send binary HTTP bodies, so the upload happens here in the browser.</p>
+      <button id="record-btn">Start Recording</button>
+      <p id="record-status" class="status"></p>
+      <p id="chunk-count" class="muted"></p>
+    </section>
+
+    <section id="results-section" class="card results-card" hidden>
+      <div class="results-header">
+        <span class="results-check">✓</span>
+        <h2>3. Analysis</h2>
+      </div>
+      <p id="summary" class="summary"></p>
+      <div id="topics"></div>
+      <div id="action-items"></div>
+    </section>
+  </div>
+  <script type="module" src="/src/main.ts"></script>
+</body>
+</html>
