@@ -4,7 +4,7 @@
   "private": true,
   "type": "commonjs",
   "scripts": {
-    "build": "pnpm exec cef build",
+    "build": "npx cef build",
     "prepare-manifest": "node prepare-manifest.mjs"
   },
 "devDependencies": {

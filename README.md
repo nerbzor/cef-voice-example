@@ -8,28 +8,40 @@ cd cef-voice-example
 ## Quickstart
 
 ```
-1. ROB (https://rob.compute.dev.ddcdragon.com)
-   → Create agent service with your Cere wallet → copy agentServicePubkey
+0. Get a Cere wallet + devnet tokens
+   → https://wallet.dev.cere.io — create wallet, request devnet tokens from the faucet
 
-2. AssemblyAI (https://assemblyai.com)
-   → Sign up → copy API key
+1. Get your API keys
+   AssemblyAI  → https://assemblyai.com → sign up → API Keys
+   Gemini      → https://aistudio.google.com → Get API key
+
+2. Create an agent service in ROB
+   → https://rob.compute.dev.ddcdragon.com
+   → sign in with your Cere wallet → Create agent service → copy agentServicePubkey
+   (must be ROB — not the marketplace playground)
 
 3. Fill in .env
    cp .env.example .env
-   → paste agentServicePubkey + AssemblyAI key
+   → set VITE_AGENT_SERVICE_PUBKEY=<pubkey>
+   → set VITE_AGENT_ID=<pubkey>:voice-agent   ← same pubkey, different field
+   → set VITE_ASSEMBLY_AI_KEY=<your AssemblyAI key>
 
 4. Build the agent
    cd agent && npm install && npm run build && npm run prepare-manifest && cd ..
-   → produces manifest-publish.json
+   → produces manifest-publish.json at the repo root
 
-5. ROB → upload manifest-publish.json → Publish
+5. Publish the agent
+   → ROB → open your agent service → upload manifest-publish.json → Publish
 
-6. Marketplace (https://agent-marketplace.compute.dev.ddcdragon.com)
-   → find your agent → enter AssemblyAI key + Gemini key in settings → Connect
+6. Activate and configure in the marketplace
+   → https://agent-marketplace.compute.dev.ddcdragon.com
+   → sign in with the same Cere wallet
+   → find your agent → open settings → enter AssemblyAI key + Gemini key → Connect
+   (this also claims your vault — required before the browser client will work)
 
 7. Run the client
    npm install && npm run dev → open http://localhost:5173
-   → connect the same Cere wallet you used in the marketplace → Record → done
+   → connect the exact same Cere wallet from steps 2 + 6 → Record → done
 ```
 
 ---
